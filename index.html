@@ -113,30 +113,55 @@ a{color:#b99cff;cursor:pointer}
 
 <script>
 
-function showPage(page) {
-  ['home', 'signup', 'login', 'dashboard'].forEach(function(id) {
-    const element = document.getElementById(id);
-    if (element) element.classList.add('hidden');
+<script type="module">
+import { createClient } from
+'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const SUPABASE_URL = 'wqszwkyoaagqauzwkakq';
+const SUPABASE_KEY = 'sb_publishable_OW5LJxbys35ZmQC2voztYQ_qs5UfyAG';
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+window.showPage = function(page) {
+  ['home', 'signup', 'login', 'dashboard'].forEach(id => {
+    document.getElementById(id)?.classList.add('hidden');
+  });
+  document.getElementById(page)?.classList.remove('hidden');
+};
+
+window.demoSignup = async function(event) {
+  event.preventDefault();
+  const fields = event.target.querySelectorAll('input');
+  const name = fields[0].value;
+  const email = fields[1].value;
+  const password = fields[2].value;
+
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: { full_name: name },
+      emailRedirectTo: window.location.origin + window.location.pathname
+    }
   });
 
-  const selected = document.getElementById(page);
-  if (selected) {
-    selected.classList.remove('hidden');
-    selected.scrollIntoView({ behavior: 'smooth' });
-  }
-}
-
-function demoSignup(event) {
-  event.preventDefault();
   document.getElementById('signupMessage').textContent =
-    'Demo only! Real account registration will be added later.';
-}
+    error ? error.message : 'Account created! Check your email to confirm.';
+};
 
-function demoLogin(event) {
+window.demoLogin = async function(event) {
   event.preventDefault();
-  showPage('dashboard');
-}
-  
+  const fields = event.target.querySelectorAll('input');
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: fields[0].value,
+    password: fields[1].value
+  });
+
+  document.getElementById('loginMessage').textContent =
+    error ? error.message : 'Login successful!';
+
+  if (!error) window.showPage('dashboard');
+};
 </script>
 </body>
 </html>
