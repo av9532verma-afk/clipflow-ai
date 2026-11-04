@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClipFlow AI - Create Viral Shorts</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+    }
+    header {
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #26304a;
+    }
+    .logo { font-size: 25px; font-weight: bold; color: #a78bfa; }
+    a { color: white; text-decoration: none; }
+    .hero {
+      text-align: center;
+      padding: 85px 20px;
+    }
+    h1 { font-size: clamp(38px, 7vw, 65px); margin: 15px 0; }
+    h1 span { color: #a78bfa; }
+    .hero p { color: #bdc5d8; font-size: 18px; }
+    .input-box {
+      margin: 30px auto;
+      max-width: 600px;
+      display: flex;
+      gap: 10px;
+    }
+    input {
+      flex: 1;
+      min-width: 0;
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid #39435d;
+      background: #171f35;
+      color: white;
+    }
+    button {
+      padding: 15px 22px;
+      background: #8057ed;
+      color: white;
+      border: 0;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 30px 7% 70px;
+    }
+    .card {
+      background: #151d32;
+      padding: 25px;
+      border: 1px solid #29334e;
+      border-radius: 15px;
+    }
+    .card p { color: #b7bfd1; }
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #9ca3b5;
+      border-top: 1px solid #26304a;
+    }
+    @media(max-width: 500px) {
+      .input-box { flex-direction: column; }
+      header { padding: 18px 5%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">✦ ClipFlow AI</div>
+    <a href="#features">Features</a>
+  </header>
+
+  <section class="hero">
+    <p>YOUR AI VIDEO ASSISTANT</p>
+    <h1>Turn Long Videos<br>Into <span>Viral Shorts</span></h1>
+    <p>Create engaging short videos with AI-powered editing.</p>
+
+    <div class="input-box">
+      <input type="url" placeholder="Paste your video URL here">
+      <button onclick="alert('AI video processing will be added in the next step!')">
+        Get Started
+      </button>
+    </div>
+    <p>For videos you own or have permission to use.</p>
+  </section>
+
+  <section class="features" id="features">
+    <div class="card">
+      <h2>✂️ AI Clipping</h2>
+      <p>Find interesting moments and create short clips.</p>
+    </div>
+    <div class="card">
+      <h2>💬 Smart Captions</h2>
+      <p>Add subtitles to make videos easier to watch.</p>
+    </div>
+    <div class="card">
+      <h2>📱 Social Publishing</h2>
+      <p>Prepare videos for YouTube Shorts and Instagram Reels.</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 ClipFlow AI. All rights reserved.
+  </footer>
+</body>
+</html>
