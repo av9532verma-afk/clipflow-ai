@@ -112,23 +112,31 @@ a{color:#b99cff;cursor:pointer}
 </footer>
 
 <script>
-function showPage(page){
-document.getElementById('home').classList.add('hidden');
-document.getElementById('signup').classList.add('hidden');
-document.getElementById('login').classList.add('hidden');
-document.getElementById(page).classList.remove('hidden');
-document.getElementById(page).scrollIntoView({behavior:'smooth'});
+
+function showPage(page) {
+  ['home', 'signup', 'login', 'dashboard'].forEach(function(id) {
+    const element = document.getElementById(id);
+    if (element) element.classList.add('hidden');
+  });
+
+  const selected = document.getElementById(page);
+  if (selected) {
+    selected.classList.remove('hidden');
+    selected.scrollIntoView({ behavior: 'smooth' });
+  }
 }
-function demoSignup(event){
-event.preventDefault();
-document.getElementById('signupMessage').textContent =
-"Demo only! Real account registration will be added next.";
+
+function demoSignup(event) {
+  event.preventDefault();
+  document.getElementById('signupMessage').textContent =
+    'Demo only! Real account registration will be added later.';
 }
-function demoLogin(event){
-event.preventDefault();
-document.getElementById('loginMessage').textContent =
-"Demo only! Secure login will be added next.";
+
+function demoLogin(event) {
+  event.preventDefault();
+  showPage('dashboard');
 }
+  
 </script>
 </body>
 </html>
